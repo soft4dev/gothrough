@@ -6,10 +6,14 @@ type Backend struct {
 }
 
 type Server struct {
-	Listen []int `yaml:"listen"`
+	Listen   int       `yaml:"listen"`
+	Backends []Backend `yaml:"backends"`
+}
+
+type L4 struct {
+	Servers []Server `yaml:"servers"`
 }
 
 type Config struct {
-	Server   Server    `yaml:"server"`
-	Backends []Backend `yaml:"backends"`
+	L4 L4 `yaml:"l4"`
 }
